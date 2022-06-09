@@ -13,24 +13,10 @@ const connection = mysql.createConnection({
     database: 'tcc_db'
   });
 
-app.post("/dog", (req, res)=>{
+app.post("/animal", (req, res)=>{
     const {raca} = req.body
     connection.query(
-        "SELECT * FROM `cachorro` WHERE `raca` = ?",
-        [raca],
-        (error, result)=>{
-            if(error) {
-                console.log(error)
-            }
-            res.json(result)
-        }
-    )
-})
- 
-app.post("/cat", (req, res)=>{
-    const {raca} = req.body
-    connection.query(
-        "SELECT * FROM `gato` WHERE `raca` = ?",
+        "SELECT * FROM `animal` WHERE `raca` = ?",
         [raca],
         (error, result)=>{
             if(error) {
@@ -41,4 +27,5 @@ app.post("/cat", (req, res)=>{
     )
 })
 
-app.listen(3000, "10.0.3.247", ()=>{console.log("Server está funfando")})
+
+app.listen(3000, "10.0.3.247")
